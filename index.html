@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, IYINOLUWA!</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@700;900&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Poppins',sans-serif;background:#ffe6e6;color:#333;}
+    #cover{position:fixed;top:0;left:0;width:100vw;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:#ffe6e6;z-index:10;}
+    #cover h1{font-family:'Great Vibes',cursive;font-size:3em;color:#d6336c;text-shadow:2px 2px 4px rgba(0,0,0,0.2);margin-bottom:20px;}
+    #start-btn{padding:15px 30px;font-size:1.2em;font-weight:500;background:#d6336c;color:#fff;border:none;border-radius:5px;cursor:pointer;box-shadow:0 4px 8px rgba(0,0,0,0.2);transition:background 0.3s;}
+    #start-btn:hover{background:#b02a53;}
+    .slider{position:relative;width:100vw;height:100vh;overflow:hidden;}
+    .slide{position:absolute;top:0;left:0;width:100%;height:100%;display:none;justify-content:center;align-items:center;padding:20px;overflow:auto;}
+    .slide.active{display:flex;}
+    /* Slide 1 layout */
+    #slide-1{flex-direction:row;}
+    #banner{width:150px;font-family:'Great Vibes',cursive;font-size:1.8em;text-align:center;background:linear-gradient(45deg,red,orange,yellow,green,blue,indigo,violet);-webkit-background-clip:text;color:transparent;animation:hueRotate 5s infinite linear;}
+    @keyframes hueRotate{from{filter:hue-rotate(0deg);}to{filter:hue-rotate(360deg);}}
+    .gallery-slider{position:relative;width:80%;max-width:700px;margin-left:20px;height:auto;}
+    .gallery-item{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;display:none;align-items:center;gap:20px;flex-direction:row;}
+    .gallery-item.active{display:flex;}
+    .gallery-item img{width:300px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.2);}
+    .gallery-item .note{font-family:'Playfair Display',serif;font-size:1.2em;font-weight:700;color:#444;text-align:left;line-height:1.4;}
+    /* Slide 2 */
+    #slide-2{flex-direction:column;}
+    #slide-2 h2{font-family:'Playfair Display',serif;font-size:2.5em;font-weight:900;margin-bottom:20px;text-shadow:2px 2px #fff;}
+    .video-container{display:flex;justify-content:center;align-items:center;gap:15px;width:100%;}
+    .video-container video{display:none;width:60%;max-width:600px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.2);}
+    /* Slide 3 */
+    #slide-3{flex-direction:column;position:relative;overflow:hidden;}
+    #slide-3 .message{font-family:'Playfair Display',serif;font-size:1.5em;font-weight:700;color:#333;max-width:800px;text-align:center;line-height:1.6;z-index:1;}
+    /* Balloons */
+    .balloon {
+      position:absolute;
+      bottom:-150px;
+      width:50px;
+      height:70px;
+      border-radius:50% 50% 50% 50%;
+      opacity:0.8;
+      animation:floatUp 8s infinite ease-in;
+    }
+    @keyframes floatUp {
+      0% {transform: translateY(0) scale(0.8); opacity:0.8;}
+      100% {transform: translateY(-120vh) scale(1); opacity:0;}
+    }
+    /* Navigation */
+    .nav-buttons{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:20px;z-index:1;}
+    .nav-buttons button{padding:10px 20px;background:#d6336c;color:#fff;border:none;border-radius:5px;cursor:pointer;font-family:'Poppins',sans-serif;font-size:1em;box-shadow:0 4px 8px rgba(0,0,0,0.2);transition:background 0.3s;}
+    .nav-buttons button:hover{background:#b02a53;}
+  </style>
+</head>
+<body>
+  <div id="cover">
+    <h1>Happy Birthday, my darling IYINOLUWA!</h1>
+    <button id="start-btn">Click to Start</button>
+  </div>
+  <audio id="birthday-song" loop preload="auto">
+    <source src="audio/birthday_song.mp3" type="audio/mpeg">
+  </audio>
+  <div class="slider">
+    <div class="slide" id="slide-1">
+      <div id="banner">Happy Birthday my love</div>
+      <div class="gallery-slider">
+        <div class="gallery-item" data-index="0">
+          <img src="images/photo1.jpg" alt="Memory 1">
+          <p class="note">IYINOLUWA, from the moment you said “yes” to this relationship, you filled my days with unwavering hope, overflowing love, boundless joy, and steadfast commitment.</p>
+        </div>
+        <div class="gallery-item" data-index="1">
+          <img src="images/photo2.jpg" alt="Memory 2">
+          <p class="note">You have made me the happiest man alive, illuminating every corner of my world with your warmth and kindness.</p>
+        </div>
+        <div class="gallery-item" data-index="2">
+          <img src="images/photo3.jpg" alt="Memory 3">
+          <p class="note">You’ve tolerated my flaws, listened with compassion, and stood by me through every challenge with unwavering dedication.</p>
+        </div>
+        <div class="gallery-item" data-index="3">
+          <img src="images/photo4.jpg" alt="Memory 4">
+          <p class="note">The world sees the goodness you share, but I know how profoundly beautiful and radiant you truly are.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide" id="slide-2">
+      <h2>🎥 Memories in Motion 🎥</h2>
+      <div class="video-container">
+        <video id="vid1" preload="metadata"><source src="videos/video1.mp4" type="video/mp4"></video>
+        <video id="vid2" preload="metadata"><source src="videos/video2.mp4" type="video/mp4"></video>
+        <video id="vid3" preload="metadata"><source src="videos/video3.mp4" type="video/mp4"></video>
+        <video id="vid4" preload="metadata"><source src="videos/video4.mp4" type="video/mp4"></video>
+        <video id="vid5" preload="metadata"><source src="videos/video5.mp4" type="video/mp4"></video>
+        <video id="vid6" preload="metadata"><source src="videos/video6.mp4" type="video/mp4"></video>
+      </div>
+    </div>
+    <div class="slide" id="slide-3">
+      <div class="message">
+        <p>In agreement, in disagreements, ups and downs, we’re one, the vision is clear.</p>
+        <p>Happy Birthday my Gee.</p>
+      </div>
+      <!-- Balloons -->
+      <div class="balloon" style="left:10%;background:#FF5E5E;animation-delay:0s"></div>
+      <div class="balloon" style="left:30%;background:#FFBD4A;animation-delay:2s"></div>
+      <div class="balloon" style="left:50%;background:#4ADE80;animation-delay:4s"></div>
+      <div class="balloon" style="left:70%;background:#5F9DF7;animation-delay:1s"></div>
+      <div class="balloon" style="left:90%;background:#C084FC;animation-delay:3s"></div>
+    </div>
+    <div class="nav-buttons">
+      <button id="prev-btn">Previous</button>
+      <button id="next-btn">Next</button>
+    </div>
+  </div>
+  <script>
+    const cover=document.getElementById('cover');
+    const startBtn=document.getElementById('start-btn');
+    const audio=document.getElementById('birthday-song');
+    const slides=document.querySelectorAll('.slide');
+    const prev=document.getElementById('prev-btn');
+    const next=document.getElementById('next-btn');
+    let current=0;
+    const galleryItems=document.querySelectorAll('.gallery-item');
+    let gIndex=0,gInt;
+    function startGallery(){galleryItems.forEach(i=>i.classList.remove('active'));galleryItems[0].classList.add('active');gIndex=0;gInt=setInterval(()=>{galleryItems[gIndex].classList.remove('active');gIndex=(gIndex+1)%galleryItems.length;galleryItems[gIndex].classList.add('active');},10000);}
+    function stopGallery(){clearInterval(gInt);}
+    function playVideos(){const vids=Array.from(document.querySelectorAll('#slide-2 video'));let i=0;vids.forEach(v=>v.style.display='none');(function nextVid(){if(i<vids.length){vids.forEach(v=>v.style.display='none');vids[i].style.display='block';vids[i].play();vids[i].onended=()=>{i++;nextVid();};}})();}
+    function showSlide(idx){slides.forEach((s,i)=>s.classList.toggle('active',i===idx));current=idx;if(idx===0)startGallery();else stopGallery();if(idx===1)playVideos();prev.style.visibility=idx===0?'hidden':'visible';next.style.visibility=idx===slides.length-1?'hidden':'visible';}
+    startBtn.addEventListener('click',()=>{cover.style.display='none';audio.play().catch(()=>{});showSlide(0);});
+    prev.addEventListener('click',()=>{if(current>0)showSlide(current-1);});
+    next.addEventListener('click',()=>{if(current<slides.length-1)showSlide(current+1);});
+  </script>
+</body>
+</html>
