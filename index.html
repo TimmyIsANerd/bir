@@ -111,23 +111,83 @@
       <button id="next-btn">Next</button>
     </div>
   </div>
-  <script>
-    const cover=document.getElementById('cover');
-    const startBtn=document.getElementById('start-btn');
-    const audio=document.getElementById('birthday-song');
-    const slides=document.querySelectorAll('.slide');
-    const prev=document.getElementById('prev-btn');
-    const next=document.getElementById('next-btn');
-    let current=0;
-    const galleryItems=document.querySelectorAll('.gallery-item');
-    let gIndex=0,gInt;
-    function startGallery(){galleryItems.forEach(i=>i.classList.remove('active'));galleryItems[0].classList.add('active');gIndex=0;gInt=setInterval(()=>{galleryItems[gIndex].classList.remove('active');gIndex=(gIndex+1)%galleryItems.length;galleryItems[gIndex].classList.add('active');},10000);}
-    function stopGallery(){clearInterval(gInt);}
-    function playVideos(){const vids=Array.from(document.querySelectorAll('#slide-2 video'));let i=0;vids.forEach(v=>v.style.display='none');(function nextVid(){if(i<vids.length){vids.forEach(v=>v.style.display='none');vids[i].style.display='block';vids[i].play();vids[i].onended=()=>{i++;nextVid();};}})();}
-    function showSlide(idx){slides.forEach((s,i)=>s.classList.toggle('active',i===idx));current=idx;if(idx===0)startGallery();else stopGallery();if(idx===1)playVideos();prev.style.visibility=idx===0?'hidden':'visible';next.style.visibility=idx===slides.length-1?'hidden':'visible';}
-    startBtn.addEventListener('click',()=>{cover.style.display='none';audio.play().catch(()=>{});showSlide(0);});
-    prev.addEventListener('click',()=>{if(current>0)showSlide(current-1);});
-    next.addEventListener('click',()=>{if(current<slides.length-1)showSlide(current+1);});
+  <script defer>
+    // Organized variables and DOM references
+    const cover = document.getElementById('cover');
+    const startBtn = document.getElementById('start-btn');
+    const audio = document.getElementById('birthday-song');
+    const slides = document.querySelectorAll('.slide');
+    const prev = document.getElementById('prev-btn');
+    const next = document.getElementById('next-btn');
+    let current = 0;
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    let gIndex = 0, gInt;
+    
+    // Gallery management functions
+    function startGallery() {
+      galleryItems.forEach(i => i.classList.remove('active'));
+      galleryItems[0].classList.add('active');
+      gIndex = 0;
+      gInt = setInterval(() => {
+        galleryItems[gIndex].classList.remove('active');
+        gIndex = (gIndex + 1) % galleryItems.length;
+        galleryItems[gIndex].classList.add('active');
+      }, 10000);
+    }
+    
+    function stopGallery() {
+      clearInterval(gInt);
+    }
+    
+    // Video playback function
+    function playVideos() {
+      const vids = Array.from(document.querySelectorAll('#slide-2 video'));
+      let i = 0;
+      vids.forEach(v => v.style.display = 'none');
+      
+      function nextVid() {
+        if (i < vids.length) {
+          vids.forEach(v => v.style.display = 'none');
+          vids[i].style.display = 'block';
+          vids[i].play();
+          vids[i].onended = () => {
+            i++;
+            nextVid();
+          };
+        }
+      }
+      
+      nextVid();
+    }
+    
+    // Slide navigation function
+    function showSlide(idx) {
+      slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+      current = idx;
+      
+      if (idx === 0) startGallery();
+      else stopGallery();
+      
+      if (idx === 1) playVideos();
+      
+      prev.style.visibility = idx === 0 ? 'hidden' : 'visible';
+      next.style.visibility = idx === slides.length - 1 ? 'hidden' : 'visible';
+    }
+    
+    // Event listeners
+    startBtn.addEventListener('click', () => {
+      cover.style.display = 'none';
+      audio.play().catch(() => {});
+      showSlide(0);
+    });
+    
+    prev.addEventListener('click', () => {
+      if (current > 0) showSlide(current - 1);
+    });
+    
+    next.addEventListener('click', () => {
+      if (current < slides.length - 1) showSlide(current + 1);
+    });
   </script>
 </body>
 </html>
